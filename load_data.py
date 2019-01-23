@@ -7,7 +7,7 @@ for town in cities:
     s=''
     location=s.join(l)
     # Download the JSON data from OpenWeatherMap.org's API.
-    url = 'http://api.openweathermap.org/data/2.5/forecast?q=%s&APPID=310f488d4bb7dcb0b39b3f3e20afb1c3'% (location)
+    url = 'http://api.openweathermap.org/data/2.5/forecast?q=%s&APPID=[API_KEY]'% (location)
     response = requests.get(url)
     # Load JSON data into a Python variable.
     weatherData = json.loads(response.text)
