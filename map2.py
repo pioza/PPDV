@@ -30,22 +30,24 @@ def show_map():
     iren.GetRenderWindow().AddRenderer(renderer)
 
 
-    # Create a common text property.
-    temperatureProperty = vtk.vtkTextProperty()
-    temperatureProperty.SetFontSize(20)
-    temperatureProperty.SetColor(1.0, 0, 0)
-
 
 
     ####################################################################################################################
 
-    ind00 = vtk.vtkTextActor()
-    ind00.SetInput("19°")
-    ind00.SetPosition(650,440)
-    ind00prop = ind00.GetTextProperty()
-    ind00prop = ind00.SetTextProperty(temperatureProperty)
-    renderer.AddActor(ind00)
+    #Warsaw
 
+    ind00 = vtk.vtkTextSource()
+    ind00.SetText('19')
+    ind00.SetBackgroundColor(1, 0, 0)
+    ind00.BackingOn()
+    ind00.Update()
+    textMapper = vtk.vtkPolyDataMapper()
+    textMapper.SetInputConnection(ind00.GetOutputPort())
+    indActor01 = vtk.vtkActor()
+    indActor01.SetMapper(textMapper)
+    indActor01.SetScale(1)
+    indActor01.SetPosition(420, 260, 0.0)
+    renderer.AddActor(indActor01)
 
 
     ind01 = vtk.vtkCubeSource()
@@ -53,13 +55,15 @@ def show_map():
     ind01.SetYLength(3.5)
     ind01.SetZLength(50)
     ind01.SetCenter(400, 265, 0.0)
-
     indMapper01 = vtk.vtkPolyDataMapper()
     indMapper01.SetInputConnection(ind01.GetOutputPort())
     indActor01 = vtk.vtkActor()
     indActor01.GetProperty().SetColor(0, 0, 255)
     indActor01.SetMapper(indMapper01)
     renderer.AddActor(indActor01)
+
+
+    
 
 
 
