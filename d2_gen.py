@@ -7,8 +7,7 @@ from matplotlib.figure import Figure
 class DiagramGenerator:
     def __init__(self):
         self.city = ['Bialystok', 'Bydgoszcz', 'Gdansk', 'Katowice', 'Kielce', 'Krakow', 'Lublin', 'Lodz', 'Olsztyn',
-                     'Opole',
-                     'Poznan', 'Rzeszow', 'Szczecin', 'Warszawa', 'Wroclaw', 'Zielona Gora']
+                     'Opole', 'Poznan', 'Rzeszow', 'Szczecin', 'Warszawa', 'Wroclaw', 'Zielona Gora']
         self.data = defaultdict(list)
 
     def read_data(self):

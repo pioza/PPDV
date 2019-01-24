@@ -79,7 +79,7 @@ class Window(QWidget):
 
     def show_diagrams(self):
 
-        time = str(self.date_list.currentItem().text())
+
         place = str(self.city_list.currentItem().text())
 
         self.diag_figure = DiagramGenerator.draw_diagram(self.gen2d, place)
@@ -88,6 +88,11 @@ class Window(QWidget):
         layout.addWidget(self.canvas, 2, 0, 4, 4)
 
     def show_3dmap(self):
+        time = str(self.date_list.currentItem().text())
+        date = time.split()[0].split('-')
+        ch_time = datetime.datetime(int(date[2]),int(date[1]),int(date[0]),int(float(time.split()[2])))
+        #print(ch_time.timestamp())
+
         self.vtkWidget = show_map()
         self.vtkWidget.setFixedWidth(636)
         self.vtkWidget.setFixedHeight(476)
