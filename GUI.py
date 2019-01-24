@@ -94,8 +94,8 @@ class Window(QWidget):
         #print(ch_time.timestamp())
 
         self.vtkWidget = show_map()
-        self.vtkWidget.setFixedWidth(636)
-        self.vtkWidget.setFixedHeight(476)
+        self.vtkWidget.setFixedWidth(636*1.75)
+        self.vtkWidget.setFixedHeight(476*1.75)
         layout.addWidget(self.vtkWidget, 2, 4, 4, 5)
 
     def change_chbox(self):
