@@ -7,8 +7,6 @@ from vtk import (
     vtkActor, VTK_MAJOR_VERSION
 )
 
-
-# Read the image
 def show_map():
     jpeg_reader = vtkJPEGReader()
     jpeg_reader.SetFileName('map1.jpg')
@@ -63,8 +61,6 @@ def show_map():
     renderer.AddActor(indActor01)
 
 
-    
-
 
 
     ####################################################################################################################
@@ -72,5 +68,3 @@ def show_map():
     interactor.Initialize()
     interactor.Start()
     return iren
-
-
