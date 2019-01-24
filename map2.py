@@ -6,6 +6,8 @@ from vtk import (
     vtkRenderer, vtkRenderWindow, vtkRenderWindowInteractor, vtkSuperquadricSource,
     vtkActor, VTK_MAJOR_VERSION
 )
+
+def 
 # Read the image
 jpeg_reader = vtkJPEGReader()
 jpeg_reader.SetFileName('map1.jpg')
@@ -24,11 +26,25 @@ image_actor.SetInputData(image_data)
 # actor.SetMapper(mapper)
 ######################################
 
+cube0 = vtk.vtkCubeSource()
+cube0.SetXLength(2.5)
+cube0.SetYLength(3.5)
+cube0.SetZLength(4.5)
+cube0.SetCenter(110.0, 0.0, 0.0)
+cubeMapper0 = vtk.vtkPolyDataMapper()
+cubeMapper0.SetInputConnection(cube0.GetOutputPort())
+cubeActor0 = vtk.vtkActor()
+cubeActor0.GetProperty().SetColor(255, 0, 0)
+cubeActor0.SetMapper(cubeMapper0)
 
 
 renderer = vtk.vtkRenderer()
 
 renderer.AddActor(image_actor)
+####
+renderer.AddActor(cubeActor0)
+
+####
 renWin = vtk.vtkRenderWindow()
 renWin.AddRenderer(renderer)
 
@@ -37,6 +53,3 @@ iren.SetRenderWindow(renWin)
 
 iren.Initialize()
 iren.Start()
-
-
-
