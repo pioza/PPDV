@@ -7,6 +7,7 @@ from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from d2_gen import DiagramGenerator
+from map import show_map
 
 
 class Window(QWidget):
@@ -17,7 +18,7 @@ class Window(QWidget):
         self.gen2d = DiagramGenerator()
         self.gen2d.read_data()
 
-        # self.3dfc =
+
 
         label1 = QLabel("Choose date:")
         layout.addWidget(label1, 0, 0, 1, 1)
@@ -74,6 +75,8 @@ class Window(QWidget):
         self.clou_chbox.stateChanged.connect(self.change_chbox)
         layout.addWidget(self.clou_chbox, 0, 9, 1, 1)
 
+        self.show_3dmap()
+
     def show_diagrams(self):
 
         time = str(self.date_list.currentItem().text())
@@ -83,6 +86,11 @@ class Window(QWidget):
         self.canvas = FigureCanvasQTAgg(self.diag_figure)
 
         layout.addWidget(self.canvas, 2, 0, 4, 4)
+
+    def show_3dmap(self):
+        self.vtkWidget = show_map()
+
+        layout.addWidget(self.vtkWidget, 2, 4, 4, 5)
 
     def change_chbox(self):
         controls = []
