@@ -89,7 +89,8 @@ class Window(QWidget):
 
     def show_3dmap(self):
         self.vtkWidget = show_map()
-
+        self.vtkWidget.setFixedWidth(636)
+        self.vtkWidget.setFixedHeight(476)
         layout.addWidget(self.vtkWidget, 2, 4, 4, 5)
 
     def change_chbox(self):
