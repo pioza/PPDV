@@ -19,13 +19,6 @@ def show_map():
     image_actor = vtkImageActor()
     image_actor.SetInputData(image_data)
 
-    ######################################
-    # mapper = vtk.vtkPolyDataMapper()
-    # mapper.SetInputConnection(tf.GetOutputPort())
-    # actor = vtk.vtkActor()
-    # actor.SetMapper(mapper)
-    ######################################
-
     renderer = vtk.vtkRenderer()
 
     renderer.AddActor(image_actor)
@@ -36,87 +29,29 @@ def show_map():
     #iren.SetRenderWindow(renWin)
     iren.GetRenderWindow().AddRenderer(renderer)
 
+    ####################################################################################################################
+    cube00 = vtk.vtkCubeSource()
+    cube00.SetXLength(2.5)
+    cube00.SetYLength(3.5)
+    cube00.SetZLength(12)
+    cube00.SetCenter(400, 265, 0.0)
+
+    cubeMapper0 = vtk.vtkPolyDataMapper()
+    cubeMapper0.SetInputConnection(cube00.GetOutputPort())
+    cubeActor0 = vtk.vtkActor()
+    cubeActor0.GetProperty().SetColor(0, 0, 255)
+    cubeActor0.SetMapper(cubeMapper0)
+
+
+
+
+    renderer.AddActor(cubeActor0)
+    
+    
+    ####################################################################################################################
     interactor = iren.GetRenderWindow().GetInteractor()
     interactor.Initialize()
     interactor.Start()
     return iren
 
 
-
-
-
-
-
-
-
-
-
-
-
-'''from __future__ import print_function
-import sys
-from vtk import (
-    vtkJPEGReader, vtkImageCanvasSource2D, vtkImageActor, vtkPolyDataMapper,
-    vtkRenderer, vtkRenderWindow, vtkRenderWindowInteractor, vtkSuperquadricSource,
-    vtkActor, VTK_MAJOR_VERSION
-)
-import vtk
-from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
-import vtk
-import time
-from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
-
-
-
-def show_map():
-
-    # Read the image
-    jpeg_reader = vtkJPEGReader()
-    jpeg_reader.SetFileName('map1.jpg')
-    jpeg_reader.Update()
-    image_data = jpeg_reader.GetOutput()
-
-    # Create an image actor to display the image
-    image_actor = vtkImageActor()
-    image_actor.SetInputData(image_data)
-
-    ######################################
-    # mapper = vtk.vtkPolyDataMapper()
-    # mapper.SetInputConnection(tf.GetOutputPort())
-    # actor = vtk.vtkActor()
-    # actor.SetMapper(mapper)
-    ######################################
-
-    renderer = vtk.vtkRenderer()
-
-    #renderer.AddActor(image_actor)
-    #renderer.AddActor(cubeActor0)
-
-
-    #################################################
-    # renWin = vtk.vtkRenderWindow()
-    # renWin.AddRenderer(renderer)
-    #
-    # iren = vtk.vtkRenderWindowInteractor()
-    # iren.SetRenderWindow(renWin)
-    #
-    # iren.Initialize()
-    # iren.Start()
-    #################################################
-
-    mapper = vtk.vtkPolyDataMapper()
-    mapper.SetInputConnection(tf.GetOutputPort())
-    actor = vtk.vtkActor()
-    actor.SetMapper(mapper)
-
-    renderer = vtk.vtkRenderer()
-
-    vtkWidget = QVTKRenderWindowInteractor()
-
-    vtkWidget.GetRenderWindow().AddRenderer(renderer)
-
-    interactor = vtkWidget.GetRenderWindow().GetInteractor()
-    renderer.AddActor(actor)
-    interactor.Initialize()
-    interactor.Start()
-    return vtkWidget'''
