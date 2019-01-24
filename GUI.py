@@ -44,6 +44,8 @@ class Window(QWidget):
         label2 = QLabel("Choose city:")
         layout.addWidget(label2, 0, 2, 1, 1)
 
+        self.city_list.itemClicked.connect(self.show_diagrams)
+
         self.show_diagrams()
 
         self.temp_chbox = QCheckBox("Temperature")

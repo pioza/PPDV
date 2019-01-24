@@ -47,50 +47,51 @@ class DiagramGenerator:
 
     def draw_diagram(self, city):
         diag_fig = Figure()
-        # hours = []
-        # h = self.data[city][0][0].hour
-        # for i in range(16):
-        #    hours.append((h + 3*i) % 24)
-        # print(hours)
-        temp_x = diag_fig.add_subplot(611)
+        temp_x = diag_fig.add_subplot(511)
         temp_x.clear()
-        temp_x.set_ylabel('Temp\n')
-        temp_x.plot(self.data[city][0], self.data[city][1], color='red', marker='.', linestyle='dashed', linewidth=1,
+        temp_x.set_ylabel('Temperature\n')
+        #temp_x.plot(self.data[city][0], self.data[city][1], color='yellow', marker='.', linestyle='dashed', linewidth=1,
+         #           markersize=5)
+        temp_x.plot(self.data[city][0], self.data[city][2], color='red', marker='.', linestyle='dashed', linewidth=1,
+                    markersize=5)
+        temp_x.plot(self.data[city][0], self.data[city][3], color='cyan', marker='.', linestyle='dashed', linewidth=1,
                     markersize=5)
         temp_x.grid()
         temp_x.get_xaxis().set_ticklabels([])
 
-        temp_x = diag_fig.add_subplot(612)
-        temp_x.clear()
-        temp_x.set_ylabel('Pressure\n')
-        temp_x.plot(self.data[city][0], self.data[city][4], color='orange', marker='.', linestyle='dashed', linewidth=1,
-                    markersize=5)
-        temp_x.grid()
-        temp_x.get_xaxis().set_ticklabels([])
 
-        temp_x = diag_fig.add_subplot(613)
-        temp_x.clear()
-        temp_x.set_ylabel('Wind\n')
-        temp_x.plot(self.data[city][0], self.data[city][5], color='green', marker='.', linestyle='dashed', linewidth=1,
+        pres_x = diag_fig.add_subplot(512)
+        pres_x.clear()
+        pres_x.set_ylabel('Pressure\n')
+        pres_x.plot(self.data[city][0], self.data[city][4], color='orange', marker='.', linestyle='dashed', linewidth=1,
                     markersize=5)
-        temp_x.grid()
-        temp_x.get_xaxis().set_ticklabels([])
+        pres_x.grid()
+        pres_x.get_xaxis().set_ticklabels([])
 
-        temp_x = diag_fig.add_subplot(614)
-        temp_x.clear()
-        temp_x.set_ylabel('Rainfall\n')
-        temp_x.plot(self.data[city][0], self.data[city][6], color='blue', marker='.', linestyle='dashed', linewidth=1,
-                    markersize=5)
-        temp_x.grid()
-        temp_x.get_xaxis().set_ticklabels([])
+        wind_x = diag_fig.add_subplot(513)
+        wind_x.clear()
+        wind_x.set_ylabel('Wind\n')
+        wind_x.bar(self.data[city][0], self.data[city][5], color='green', width=0.025, align='center')
+        wind_x.grid()
+        wind_x.get_xaxis().set_ticklabels([])
 
-        temp_x = diag_fig.add_subplot(615)
-        temp_x.clear()
-        temp_x.set_ylabel('Clouds\n')
-        temp_x.plot(self.data[city][0], self.data[city][7], color='grey', marker='.', linestyle='dashed', linewidth=1,
-                    markersize=5)
-        temp_x.grid()
-        temp_x.get_xaxis().set_ticklabels([])
+        rain_x = diag_fig.add_subplot(514)
+        rain_x.clear()
+        rain_x.set_ylabel('Downfall\n')
+        rain_x.bar(self.data[city][0], self.data[city][6], color='blue', width=0.025, align='center')
+        rain_x.grid()
+        rain_x.get_xaxis().set_ticklabels([])
+
+        clou_x = diag_fig.add_subplot(515)
+        clou_x.clear()
+        clou_x.set_ylabel('Clouds\n')
+        clou_x.bar(self.data[city][0], self.data[city][7], color='grey', width=0.025, align='center')
+        for tick in clou_x.get_xticklabels():
+            tick.set_rotation(60)
+            #new_tick = tick.get_text() + '.00'
+            #print(str(tick.get_text()))
+            #tick.set_text(new_tick)
+        diag_fig.set_tight_layout(True)
 
         return diag_fig
 
