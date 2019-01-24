@@ -29,25 +29,40 @@ def show_map():
     #iren.SetRenderWindow(renWin)
     iren.GetRenderWindow().AddRenderer(renderer)
 
+
+    # Create a common text property.
+    temperatureProperty = vtk.vtkTextProperty()
+    temperatureProperty.SetFontSize(20)
+    temperatureProperty.SetColor(1.0, 0, 0)
+
+
+
     ####################################################################################################################
-    cube00 = vtk.vtkCubeSource()
-    cube00.SetXLength(2.5)
-    cube00.SetYLength(3.5)
-    cube00.SetZLength(12)
-    cube00.SetCenter(400, 265, 0.0)
 
-    cubeMapper0 = vtk.vtkPolyDataMapper()
-    cubeMapper0.SetInputConnection(cube00.GetOutputPort())
-    cubeActor0 = vtk.vtkActor()
-    cubeActor0.GetProperty().SetColor(0, 0, 255)
-    cubeActor0.SetMapper(cubeMapper0)
+    ind00 = vtk.vtkTextActor()
+    ind00.SetInput("19°")
+    ind00.SetPosition(650,440)
+    ind00prop = ind00.GetTextProperty()
+    ind00prop = ind00.SetTextProperty(temperatureProperty)
+    renderer.AddActor(ind00)
 
 
 
+    ind01 = vtk.vtkCubeSource()
+    ind01.SetXLength(2.5)
+    ind01.SetYLength(3.5)
+    ind01.SetZLength(50)
+    ind01.SetCenter(400, 265, 0.0)
 
-    renderer.AddActor(cubeActor0)
-    
-    
+    indMapper01 = vtk.vtkPolyDataMapper()
+    indMapper01.SetInputConnection(ind01.GetOutputPort())
+    indActor01 = vtk.vtkActor()
+    indActor01.GetProperty().SetColor(0, 0, 255)
+    indActor01.SetMapper(indMapper01)
+    renderer.AddActor(indActor01)
+
+
+
     ####################################################################################################################
     interactor = iren.GetRenderWindow().GetInteractor()
     interactor.Initialize()
