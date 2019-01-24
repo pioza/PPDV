@@ -6,6 +6,9 @@ from vtk import (
     vtkActor, VTK_MAJOR_VERSION
 )
 import vtk
+from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
+
+
 
 def show_map():
 
@@ -101,7 +104,7 @@ def show_map():
     render_window.AddRenderer(ren1)
 
 
-    render_window_interactor = vtkRenderWindowInteractor()
+    render_window_interactor = QVTKRenderWindowInteractor()
     render_window_interactor.SetRenderWindow(render_window)
 
 
@@ -136,4 +139,5 @@ def show_map():
     render_window.Render()
 
     # Interact with the window
-    render_window_interactor.Start()
+    #render_window_interactor.Start()
+    return render_window_interactor
