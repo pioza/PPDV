@@ -11,7 +11,7 @@ from vtk import (
 
 
 def show_map(dane, kontrolki):
-    print(kontrolki)
+
     jpeg_reader = vtkJPEGReader()
     jpeg_reader.SetFileName('map1.jpg')
     jpeg_reader.Update()

@@ -108,17 +108,6 @@ class Window(QWidget):
         return to_show
 
 
-    def show_3dmap(self):
-        time = str(self.date_list.currentItem().text())
-        date = time.split()[0].split('-')
-        ch_time = datetime.datetime(int(date[2]),int(date[1]),int(date[0]),int(float(time.split()[2])))
-        #print(ch_time.timestamp())
-
-        self.vtkWidget = show_map()
-        self.vtkWidget.setFixedWidth(636*1.75)
-        self.vtkWidget.setFixedHeight(476*1.75)
-        layout.addWidget(self.vtkWidget, 2, 4, 4, 5)
-
     def change_chbox(self):
         controls = []
 
