@@ -7,7 +7,7 @@ from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from d2_gen import DiagramGenerator
-from map2 import show_map
+from map import show_map
 
 
 class Window(QWidget):
@@ -103,7 +103,7 @@ class Window(QWidget):
         for city in ['Bialystok', 'Bydgoszcz', 'Gdansk', 'Katowice', 'Kielce', 'Krakow', 'Lublin', 'Lodz', 'Olsztyn', 'Opole',
              'Poznan', 'Rzeszow', 'Szczecin', 'Warszawa', 'Wroclaw', 'Zielona Gora']:
             index = self.gen2d.data[city][0].index(ch_time)
-            to_show.append([city, self.gen2d.data[city][1][index], self.gen2d.data[city][6][index]])
+            to_show.append([city, int(self.gen2d.data[city][1][index]), int(self.gen2d.data[city][6][index])])
 
         return to_show
 
@@ -149,8 +149,8 @@ class Window(QWidget):
         #
         #TO ZMIEN GDY ZROBISZ WCZYTYWANIE DANYCH
         #
-        #self.vtkWidget = show_map(self.get_data(), controls)
-        self.vtkWidget = show_map()
+        self.vtkWidget = show_map(self.get_data(), controls)
+        #self.vtkWidget = show_map()
         self.vtkWidget.setFixedWidth(636 * 1.75)
         self.vtkWidget.setFixedHeight(476 * 1.75)
         layout.addWidget(self.vtkWidget, 2, 4, 4, 5)
@@ -160,7 +160,6 @@ app = QApplication(sys.argv)
 
 layout = QGridLayout()
 mainWindow = Window(layout)
-
 win = QWidget()
 # win.setFixedHeight(500)
 # win.setFixedWidth(1300)
