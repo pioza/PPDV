@@ -11,7 +11,8 @@ from vtk import (
 
 
 def show_map(dane, kontrolki):
-    print(dane)
+    for i, d in enumerate(dane):
+        print(i,d)
     jpeg_reader = vtkJPEGReader()
     jpeg_reader.SetFileName('map1.jpg')
     jpeg_reader.Update()
@@ -36,10 +37,10 @@ def show_map(dane, kontrolki):
 
     ####################################################################################################################
 
-    #Warsaw
+    #Warszawa
 
     ind00 = vtk.vtkTextSource()
-    ind00.SetText('19')
+    ind00.SetText(str(dane[13][1]))
     ind00.SetBackgroundColor(1, 0, 0)
     ind00.BackingOn()
     ind00.Update()
@@ -53,9 +54,9 @@ def show_map(dane, kontrolki):
 
 
     ind01 = vtk.vtkCubeSource()
-    ind01.SetXLength(2.5)
-    ind01.SetYLength(3.5)
-    ind01.SetZLength(50)
+    ind01.SetXLength(20)
+    ind01.SetYLength(20)
+    ind01.SetZLength(50*dane[13][2])
     ind01.SetCenter(400, 265, 0.0)
     indMapper01 = vtk.vtkPolyDataMapper()
     indMapper01.SetInputConnection(ind01.GetOutputPort())
@@ -68,7 +69,7 @@ def show_map(dane, kontrolki):
     #szczecin
 
     ind10 = vtk.vtkTextSource()
-    ind10.SetText('19')
+    ind10.SetText(str(dane[12][1]))
     ind10.SetBackgroundColor(1, 0, 0)
     ind10.BackingOn()
     ind10.Update()
@@ -81,9 +82,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor10)
 
     ind11 = vtk.vtkCubeSource()
-    ind11.SetXLength(2.5)
-    ind11.SetYLength(3.5)
-    ind11.SetZLength(50)
+    ind11.SetXLength(20)
+    ind11.SetYLength(20)
+    ind11.SetZLength(50*dane[12][2])
     ind11.SetCenter(110, 395, 0.0)
     indMapper01 = vtk.vtkPolyDataMapper()
     indMapper01.SetInputConnection(ind11.GetOutputPort())
@@ -95,7 +96,7 @@ def show_map(dane, kontrolki):
     #gorzow wlkp
 
     ind20 = vtk.vtkTextSource()
-    ind20.SetText('19')
+    ind20.SetText(str(dane[9][1]))
     ind20.SetBackgroundColor(1, 0, 0)
     ind20.BackingOn()
     ind20.Update()
@@ -108,9 +109,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor20)
 
     ind21 = vtk.vtkCubeSource()
-    ind21.SetXLength(2.5)
-    ind21.SetYLength(3.5)
-    ind21.SetZLength(50)
+    ind21.SetXLength(20)
+    ind21.SetYLength(20)
+    ind21.SetZLength(50*dane[9][2])
     ind21.SetCenter(110, 320, 0.0)
     indMapper21 = vtk.vtkPolyDataMapper()
     indMapper21.SetInputConnection(ind21.GetOutputPort())
@@ -123,7 +124,7 @@ def show_map(dane, kontrolki):
 
     #zielona gora
     ind30 = vtk.vtkTextSource()
-    ind30.SetText('19')
+    ind30.SetText(str(dane[15][1]))
     ind30.SetBackgroundColor(1, 0, 0)
     ind30.BackingOn()
     ind30.Update()
@@ -136,9 +137,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor30)
 
     ind31 = vtk.vtkCubeSource()
-    ind31.SetXLength(2.5)
-    ind31.SetYLength(3.5)
-    ind31.SetZLength(50)
+    ind31.SetXLength(20)
+    ind31.SetYLength(20)
+    ind31.SetZLength(50*dane[15][2])
     ind31.SetCenter(110, 250, 0.0)
     indMapper31 = vtk.vtkPolyDataMapper()
     indMapper31.SetInputConnection(ind31.GetOutputPort())
@@ -150,7 +151,7 @@ def show_map(dane, kontrolki):
 
     #Gdansk
     ind40 = vtk.vtkTextSource()
-    ind40.SetText('19')
+    ind40.SetText(str(dane[2][1]))
     ind40.SetBackgroundColor(1, 0, 0)
     ind40.BackingOn()
     ind40.Update()
@@ -163,9 +164,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor40)
 
     ind41 = vtk.vtkCubeSource()
-    ind41.SetXLength(2.5)
-    ind41.SetYLength(3.5)
-    ind41.SetZLength(50)
+    ind41.SetXLength(20)
+    ind41.SetYLength(20)
+    ind41.SetZLength(dane[2][2]*50)
     ind41.SetCenter(270, 430, 0.0)
     indMapper41 = vtk.vtkPolyDataMapper()
     indMapper41.SetInputConnection(ind41.GetOutputPort())
@@ -177,7 +178,7 @@ def show_map(dane, kontrolki):
 
     #poznan
     ind50 = vtk.vtkTextSource()
-    ind50.SetText('19')
+    ind50.SetText(str(dane[10][1]))
     ind50.SetBackgroundColor(1, 0, 0)
     ind50.BackingOn()
     ind50.Update()
@@ -190,9 +191,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor50)
 
     ind51 = vtk.vtkCubeSource()
-    ind51.SetXLength(2.5)
-    ind51.SetYLength(3.5)
-    ind51.SetZLength(50)
+    ind51.SetXLength(20)
+    ind51.SetYLength(20)
+    ind51.SetZLength(50*dane[10][2])
     ind51.SetCenter(290, 290, 0.0)
     indMapper51 = vtk.vtkPolyDataMapper()
     indMapper51.SetInputConnection(ind51.GetOutputPort())
@@ -204,7 +205,7 @@ def show_map(dane, kontrolki):
 
     #bydgoszcz
     ind60 = vtk.vtkTextSource()
-    ind60.SetText('19')
+    ind60.SetText(str(dane[1][1]))
     ind60.SetBackgroundColor(1, 0, 0)
     ind60.BackingOn()
     ind60.Update()
@@ -217,9 +218,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor60)
 
     ind61 = vtk.vtkCubeSource()
-    ind61.SetXLength(2.5)
-    ind61.SetYLength(3.5)
-    ind61.SetZLength(60)
+    ind61.SetXLength(20)
+    ind61.SetYLength(20)
+    ind61.SetZLength(50*dane[1][2])
     ind61.SetCenter(260, 370, 0.0)
     indMapper61 = vtk.vtkPolyDataMapper()
     indMapper61.SetInputConnection(ind61.GetOutputPort())
@@ -230,7 +231,7 @@ def show_map(dane, kontrolki):
 
     #olsztyn
     ind70 = vtk.vtkTextSource()
-    ind70.SetText('19')
+    ind70.SetText(str(dane[8][1]))
     ind70.SetBackgroundColor(1, 0, 0)
     ind70.BackingOn()
     ind70.Update()
@@ -243,9 +244,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor70)
 
     ind71 = vtk.vtkCubeSource()
-    ind71.SetXLength(2.5)
-    ind71.SetYLength(3.5)
-    ind71.SetZLength(70)
+    ind71.SetXLength(20)
+    ind71.SetYLength(20)
+    ind71.SetZLength(50*dane[8][2])
     ind71.SetCenter(380, 360, 0.0)
     indMapper71 = vtk.vtkPolyDataMapper()
     indMapper71.SetInputConnection(ind71.GetOutputPort())
@@ -258,7 +259,7 @@ def show_map(dane, kontrolki):
 
     #bialystok
     ind80 = vtk.vtkTextSource()
-    ind80.SetText(str(dane[0][2]))
+    ind80.SetText(str(dane[0][1]))
     ind80.SetBackgroundColor(1, 0, 0)
     ind80.BackingOn()
     ind80.Update()
@@ -271,9 +272,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor80)
 
     ind81 = vtk.vtkCubeSource()
-    ind81.SetXLength(2.5)
-    ind81.SetYLength(3.5)
-    ind81.SetZLength(80)
+    ind81.SetXLength(20)
+    ind81.SetYLength(20)
+    ind81.SetZLength(dane[0][1]*50)
     ind81.SetCenter(500, 315, 0.0)
     indMapper81 = vtk.vtkPolyDataMapper()
     indMapper81.SetInputConnection(ind81.GetOutputPort())
@@ -285,7 +286,7 @@ def show_map(dane, kontrolki):
 
     #suwalki
     ind90 = vtk.vtkTextSource()
-    ind90.SetText('19')
+    ind90.SetText(str(dane[4][1]))
     ind90.SetBackgroundColor(1, 0, 0)
     ind90.BackingOn()
     ind90.Update()
@@ -298,9 +299,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor90)
 
     ind91 = vtk.vtkCubeSource()
-    ind91.SetXLength(2.5)
-    ind91.SetYLength(3.5)
-    ind91.SetZLength(90)
+    ind91.SetXLength(20)
+    ind91.SetYLength(20)
+    ind91.SetZLength(50*dane[4][2])
     ind91.SetCenter(475, 395, 0.0)
     indMapper91 = vtk.vtkPolyDataMapper()
     indMapper91.SetInputConnection(ind91.GetOutputPort())
@@ -312,7 +313,7 @@ def show_map(dane, kontrolki):
 
     #wroclaw
     ind100 = vtk.vtkTextSource()
-    ind100.SetText('19')
+    ind100.SetText(str(dane[14][1]))
     ind100.SetBackgroundColor(1, 0, 0)
     ind100.BackingOn()
     ind100.Update()
@@ -325,9 +326,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor100)
 
     ind101 = vtk.vtkCubeSource()
-    ind101.SetXLength(2.5)
-    ind101.SetYLength(3.5)
-    ind101.SetZLength(100)
+    ind101.SetXLength(20)
+    ind101.SetYLength(20)
+    ind101.SetZLength(50*dane[14][2])
     ind101.SetCenter(200, 180, 0.0)
     indMapper101 = vtk.vtkPolyDataMapper()
     indMapper101.SetInputConnection(ind101.GetOutputPort())
@@ -339,7 +340,7 @@ def show_map(dane, kontrolki):
 
     #lodz
     ind110 = vtk.vtkTextSource()
-    ind110.SetText('19')
+    ind110.SetText(str(dane[7][1]))
     ind110.SetBackgroundColor(1, 0, 0)
     ind110.BackingOn()
     ind110.Update()
@@ -352,9 +353,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor110)
 
     ind111 = vtk.vtkCubeSource()
-    ind111.SetXLength(2.5)
-    ind111.SetYLength(3.5)
-    ind111.SetZLength(110)
+    ind111.SetXLength(20)
+    ind111.SetYLength(20)
+    ind111.SetZLength(50*dane[7][2])
     ind111.SetCenter(335, 200, 0.0)
     indMapper111 = vtk.vtkPolyDataMapper()
     indMapper111.SetInputConnection(ind111.GetOutputPort())
@@ -367,7 +368,7 @@ def show_map(dane, kontrolki):
 
     #krakow
     ind120 = vtk.vtkTextSource()
-    ind120.SetText('19')
+    ind120.SetText(str(dane[5][1]))
     ind120.SetBackgroundColor(1, 0, 0)
     ind120.BackingOn()
     ind120.Update()
@@ -380,9 +381,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor120)
 
     ind121 = vtk.vtkCubeSource()
-    ind121.SetXLength(2.5)
-    ind121.SetYLength(3.5)
-    ind121.SetZLength(120)
+    ind121.SetXLength(20)
+    ind121.SetYLength(20)
+    ind121.SetZLength(50*dane[5][2])
     ind121.SetCenter(390, 95, 0.0)
     indMapper121 = vtk.vtkPolyDataMapper()
     indMapper121.SetInputConnection(ind121.GetOutputPort())
@@ -393,7 +394,7 @@ def show_map(dane, kontrolki):
 
     #rzeszow
     ind130 = vtk.vtkTextSource()
-    ind130.SetText('19')
+    ind130.SetText(str(dane[11][1]))
     ind130.SetBackgroundColor(1, 0, 0)
     ind130.BackingOn()
     ind130.Update()
@@ -406,9 +407,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor130)
 
     ind131 = vtk.vtkCubeSource()
-    ind131.SetXLength(2.5)
-    ind131.SetYLength(3.5)
-    ind131.SetZLength(130)
+    ind131.SetXLength(20)
+    ind131.SetYLength(20)
+    ind131.SetZLength(50*dane[11][2])
     ind131.SetCenter(480, 95, 0.0)
     indMapper131 = vtk.vtkPolyDataMapper()
     indMapper131.SetInputConnection(ind131.GetOutputPort())
@@ -419,7 +420,7 @@ def show_map(dane, kontrolki):
 
     #lublin
     ind140 = vtk.vtkTextSource()
-    ind140.SetText('19')
+    ind140.SetText(str(dane[6][1]))
     ind140.SetBackgroundColor(1, 0, 0)
     ind140.BackingOn()
     ind140.Update()
@@ -432,9 +433,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor140)
 
     ind141 = vtk.vtkCubeSource()
-    ind141.SetXLength(2.5)
-    ind141.SetYLength(3.5)
-    ind141.SetZLength(140)
+    ind141.SetXLength(20)
+    ind141.SetYLength(20)
+    ind141.SetZLength(50*dane[6][2])
     ind141.SetCenter(490,190, 0.0)
     indMapper141 = vtk.vtkPolyDataMapper()
     indMapper141.SetInputConnection(ind141.GetOutputPort())
@@ -446,7 +447,7 @@ def show_map(dane, kontrolki):
 
     #katowice
     ind150 = vtk.vtkTextSource()
-    ind150.SetText('19')
+    ind150.SetText(str(dane[3][1]))
     ind150.SetBackgroundColor(1, 0, 0)
     ind150.BackingOn()
     ind150.Update()
@@ -459,9 +460,9 @@ def show_map(dane, kontrolki):
     renderer.AddActor(indActor150)
 
     ind151 = vtk.vtkCubeSource()
-    ind151.SetXLength(2.5)
-    ind151.SetYLength(3.5)
-    ind151.SetZLength(150)
+    ind151.SetXLength(20)
+    ind151.SetYLength(20)
+    ind151.SetZLength(50*dane[3][2])
     ind151.SetCenter(310, 130, 0.0)
     indMapper151 = vtk.vtkPolyDataMapper()
     indMapper151.SetInputConnection(ind151.GetOutputPort())
@@ -475,6 +476,5 @@ def show_map(dane, kontrolki):
     interactor.Initialize()
     interactor.Start()
     return iren
-
 
 
